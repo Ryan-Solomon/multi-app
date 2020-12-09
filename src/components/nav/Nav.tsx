@@ -24,6 +24,12 @@ const Nav = () => {
         <Link to='/accordion'>
           <li>Accordion</li>
         </Link>
+        <Link to='/countergame'>
+          <li>Counter Within Certain Time</li>
+        </Link>
+        <Link to='/ttt'>
+          <li>Tic Tac Toe</li>
+        </Link>
       </ul>
     </nav>
   );
