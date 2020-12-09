@@ -1,8 +1,13 @@
 import React from 'react';
 import './InfiniteScroll.styles.scss';
+import useUnsplash from './../../hooks/unsplash';
 
 const InfiniteScroll = () => {
   const [searchInput, setSearchInput] = React.useState('');
+  const { photos, status } = useUnsplash('cars');
+  if (status === 'resolved') {
+    console.log(photos);
+  }
   return (
     <main className='scroll-container'>
       <section className='search-bar'>

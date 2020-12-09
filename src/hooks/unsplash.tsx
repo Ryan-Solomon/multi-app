@@ -26,7 +26,8 @@ const useUnsplash = (searchTerm: string) => {
         setStatus(Status.rejected);
       }
     };
-  });
+    getPhotos();
+  }, []);
 
   return { photos, status };
 };
