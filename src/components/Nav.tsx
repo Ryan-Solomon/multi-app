@@ -7,7 +7,7 @@ const Nav = () => {
     <nav>
       <ul className='nav-items'>
         <Link to='/'>
-          <li>Home</li>
+          <li className='home'>Home</li>
         </Link>
         <Link to='/infinitescroll'>
           <li>Infinite Scroll</li>
