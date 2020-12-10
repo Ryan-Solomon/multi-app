@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/nav/Nav';
 import InfiniteScrollPage from './pages/InfiniteScrollPage';
+import CounterGamePage from './pages/CounterGamePage';
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route exact path='/infinitescroll'>
           <InfiniteScrollPage />
+        </Route>
+        <Route exact path='/countergame'>
+          <CounterGamePage />
         </Route>
       </Switch>
     </Router>
