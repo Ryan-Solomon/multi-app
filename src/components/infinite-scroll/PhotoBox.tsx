@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { TPhoto } from '../../hooks/unsplash';
+import './PhotoBox.styles.scss';
 
 type TProps = {
   photo: TPhoto;

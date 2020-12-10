@@ -1,10 +1,5 @@
 @import '../../styles/variables';
 
-.scroll-container {
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
 .search-bar {
   display: flex;
   flex-direction: column;
@@ -25,4 +20,10 @@
     font-size: 1.4rem;
     outline: none;
   }
+}
+
+.image-gallery {
+  background: black;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
 }
