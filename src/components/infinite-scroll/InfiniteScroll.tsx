@@ -2,6 +2,7 @@ import React from 'react';
 import './InfiniteScroll.styles.scss';
 import useUnsplash from './../../hooks/unsplash';
 import { Status } from '../../hooks/unsplash';
+import PhotoBox from './PhotoBox';
 
 const InfiniteScroll = () => {
   const [searchInput, setSearchInput] = React.useState('');
@@ -9,6 +10,8 @@ const InfiniteScroll = () => {
 
   if (status === Status.rejected) return <h1>Something went wrong</h1>;
   if (status === Status.pending) return <h1>loading</h1>;
+
+  console.log(photos);
 
   return (
     <main className='scroll-container'>
@@ -21,7 +24,12 @@ const InfiniteScroll = () => {
           autoFocus
         />
       </section>
-      <section className='image-gallery'></section>
+      <section className='image-gallery'>
+        {photos &&
+          photos.map((photo) => {
+            return <PhotoBox key={photo.id} photo={photo} />;
+          })}
+      </section>
     </main>
   );
 };

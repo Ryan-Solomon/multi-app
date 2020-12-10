@@ -7,11 +7,14 @@ export enum Status {
   rejected = 'rejected',
 }
 
-type TPhoto = {
+export type TPhoto = {
   id: string;
   likes: number;
   urls: {
     thumb: string;
+  };
+  user: {
+    name: string;
   };
 };
 
