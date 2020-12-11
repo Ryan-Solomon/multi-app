@@ -6,12 +6,12 @@ import PhotoBox from './PhotoBox';
 
 const InfiniteScroll = () => {
   const [searchInput, setSearchInput] = React.useState('');
-  const { photos, status } = useUnsplash('cars');
+  const [searchTerm, setSearchTerm] = React.useState('cars');
+  const { photos, status } = useUnsplash(searchTerm);
+  console.log(searchTerm);
 
   if (status === Status.rejected) return <h1>Something went wrong</h1>;
   if (status === Status.pending) return <h1>loading</h1>;
-
-  console.log(photos);
 
   return (
     <main className='scroll-container'>
@@ -23,6 +23,7 @@ const InfiniteScroll = () => {
           type='text'
           autoFocus
         />
+        <button onClick={() => setSearchTerm(searchInput)}>Search</button>
       </section>
       <section className='image-gallery'>
         {photos &&

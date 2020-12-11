@@ -7,14 +7,19 @@ type TProps = {
 };
 
 const PhotoBox: FC<TProps> = ({ photo }) => {
+  const [show, setShow] = React.useState(false);
   return (
-    <section className='single-photo'>
+    <section
+      onMouseEnter={() => setShow(true)}
+      onMouseOut={() => setShow(false)}
+      className='single-photo'
+    >
       <div className='image'>
         <img src={photo.urls.thumb} alt={photo.id} />
-      </div>
-      <div className='photo-details'>
-        <h3>{photo.likes} Likes</h3>
-        <h3>Photo credit: {photo.user.name}</h3>
+        <div className={`photo-details ${show ? 'show' : 'hide'} `}>
+          <h3>{photo.likes} Likes</h3>
+          <h3>Photo credit: {photo.user.name}</h3>
+        </div>
       </div>
     </section>
   );

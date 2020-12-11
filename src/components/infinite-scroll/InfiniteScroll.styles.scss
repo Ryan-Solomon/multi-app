@@ -5,6 +5,24 @@
   flex-direction: column;
   margin-left: 4rem;
   margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  button {
+    margin-top: 1rem;
+    width: 10rem;
+    padding: 0.6rem;
+    background: none;
+    border: 1px solid $light-teal;
+    color: white;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $light-teal;
+      color: #333;
+      transform: scale(0.94);
+      cursor: pointer;
+    }
+  }
 
   label {
     color: $light-orange;
@@ -23,7 +41,8 @@
 }
 
 .image-gallery {
-  background: black;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 2rem;
+  margin: 0 2rem;
 }
