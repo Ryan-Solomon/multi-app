@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+// Add game restart
+// Fix infinite scroll and see if your caching works
+
 const CounterGame = () => {
   const [highScore, setHighScore] = useState(0);
   const [count, setCount] = useState(0);
