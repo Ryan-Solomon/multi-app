@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export enum Status {
   idle = 'idle',
@@ -42,7 +42,7 @@ const useUnsplash = (searchTerm: string) => {
       }
     };
     getPhotos();
-  }, []);
+  }, [searchTerm]);
 
   return { photos, status };
 };

@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-// Add game restart
-// Fix infinite scroll and see if your caching works
-
 const CounterGame = () => {
   const [highScore, setHighScore] = useState(0);
   const [count, setCount] = useState(0);
@@ -20,7 +17,10 @@ const CounterGame = () => {
 
   useEffect(() => {
     if (!isPlaying) return;
-    if (timeRemaining === 0) return;
+    if (timeRemaining === 0) {
+      setTimeRemaining(0);
+      return;
+    }
     const id = setInterval(() => {
       setTimeRemaining((t) => t - 1);
     }, 1000);
@@ -31,6 +31,8 @@ const CounterGame = () => {
   useEffect(() => {
     if (timeRemaining === 0) {
       setIsPlaying(false);
+      setTimeRemaining(10);
+      setCount(0);
     }
   }, [timeRemaining]);
 
