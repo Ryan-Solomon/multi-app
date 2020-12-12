@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
+import MultiChoice from '../counter-game/MultiChoice';
+import TrueFalse from '../counter-game/TrueFalse';
 
 // Types
 
-type TQuestion = {
+export type TQuestion = {
   type: string;
   question: string;
   correct_answer: string;
@@ -62,6 +64,7 @@ const initialState: TState = {
 
 const SportsQuiz = () => {
   const [data, dispatch] = React.useReducer(reducer, initialState);
+  const { error, loading, questions } = data;
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -79,9 +82,23 @@ const SportsQuiz = () => {
     fetchQuestions();
   }, []);
 
-  console.log(data);
+  if (error) return <h1>Error</h1>;
+  if (loading) return <h1>Loading...</h1>;
 
-  return <div></div>;
+  return (
+    <section className='quiz-container'>
+      <header>
+        <h1>Sports Quiz</h1>
+      </header>
+      {questions?.map((question, idx) => {
+        if (question.type === 'multiple') {
+          return <MultiChoice key={question.type + idx} question={question} />;
+        } else {
+          return <TrueFalse key={question.type + idx} question={question} />;
+        }
+      })}
+    </section>
+  );
 };
 
 export default SportsQuiz;
