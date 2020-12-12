@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import MultiChoice from '../counter-game/MultiChoice';
-import TrueFalse from '../counter-game/TrueFalse';
+import MultiChoice from '../counter-game/TrueFalse';
+import TrueFalse from '../counter-game/MultiChoice';
 
 // Types
 
@@ -91,7 +91,8 @@ const SportsQuiz = () => {
         <h1>Sports Quiz</h1>
       </header>
       {questions?.map((question, idx) => {
-        if (question.type === 'multiple') {
+        console.log(question.type);
+        if (question.type.trim().toLowerCase() === 'multiple') {
           return <MultiChoice key={question.type + idx} question={question} />;
         } else {
           return <TrueFalse key={question.type + idx} question={question} />;
