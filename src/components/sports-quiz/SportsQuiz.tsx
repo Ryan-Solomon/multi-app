@@ -91,11 +91,10 @@ const SportsQuiz = () => {
         <h1>Sports Quiz</h1>
       </header>
       {questions?.map((question, idx) => {
-        console.log(question.type);
         if (question.type.trim().toLowerCase() === 'multiple') {
-          return <MultiChoice key={question.type + idx} question={question} />;
-        } else {
           return <TrueFalse key={question.type + idx} question={question} />;
+        } else {
+          return <MultiChoice key={question.type + idx} question={question} />;
         }
       })}
     </section>

@@ -10,8 +10,6 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 const MultiChoice: FC<Props> = ({ question }) => {
-  console.log('render multi choice');
-
   const {
     question: currentQuestion,
     correct_answer,
