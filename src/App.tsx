@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Nav from './components/nav/Nav';
 import InfiniteScrollPage from './pages/InfiniteScrollPage';
 import CounterGamePage from './pages/CounterGamePage';
+import SportsQuizPage from './pages/SportsQuizPage';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
         </Route>
         <Route exact path='/countergame'>
           <CounterGamePage />
+        </Route>
+        <Route exact path='/quiz'>
+          <SportsQuizPage />
         </Route>
       </Switch>
     </Router>
