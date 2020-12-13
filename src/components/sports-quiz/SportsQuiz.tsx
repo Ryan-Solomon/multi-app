@@ -65,6 +65,8 @@ const initialState: TState = {
 const SportsQuiz = () => {
   const [data, dispatch] = React.useReducer(reducer, initialState);
   const { error, loading, questions } = data;
+  const [questionIdx, setQuestionIdx] = React.useState(0);
+  const [showResultsButton, setShowResultsButton] = React.useState(false);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -82,22 +84,32 @@ const SportsQuiz = () => {
     fetchQuestions();
   }, []);
 
+  const setNextQuestion = () => {
+    if (!questions) return;
+    if (questionIdx === questions.length - 2) {
+      setShowResultsButton(true);
+    }
+    setQuestionIdx((i) => i + 1);
+  };
+
   if (error) return <h1>Error</h1>;
   if (loading) return <h1>Loading...</h1>;
+
+  if (!questions) return <h1>Error</h1>;
+
+  const currentQuestion = questions[questionIdx];
 
   return (
     <section className='quiz-container'>
       <header>
         <h1>Sports Quiz</h1>
       </header>
-      {questions?.map((question, idx) => {
-        console.log(question);
-        if (question.type === 'boolean') {
-          return <TrueFalse key={question.type + idx} question={question} />;
-        } else {
-          return <MultiChoice key={question.type + idx} question={question} />;
-        }
-      })}
+      {currentQuestion.type === 'boolean' ? (
+        <TrueFalse question={currentQuestion} />
+      ) : (
+        <MultiChoice question={currentQuestion} />
+      )}
+      <button onClick={setNextQuestion}>Next Question</button>
     </section>
   );
 };

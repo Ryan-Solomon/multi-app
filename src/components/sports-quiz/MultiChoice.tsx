@@ -20,9 +20,10 @@ const MultiChoice: FC<Props> = ({ question }) => {
 
   return (
     <section className='multi-choice'>
+      <h1>Multiple Choice</h1>
       <h1>{currentQuestion}</h1>
       {potentialAnswers.map((answer, idx) => {
-        return <h3 key={answer + idx}>{answer}</h3>;
+        return <button key={answer + idx}>{answer}</button>;
       })}
     </section>
   );
