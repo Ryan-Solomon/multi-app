@@ -67,6 +67,7 @@ const SportsQuiz = () => {
   const { error, loading, questions } = data;
   const [questionIdx, setQuestionIdx] = React.useState(0);
   const [showResultsButton, setShowResultsButton] = React.useState(false);
+  const [correctAnswers, setCorrectAnswers] = React.useState(0);
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -84,6 +85,12 @@ const SportsQuiz = () => {
     fetchQuestions();
   }, []);
 
+  const checkIfCorrect = (correctAnswer: string, answer: string) => {
+    if (correctAnswer === answer) {
+      setCorrectAnswers((c) => c + 1);
+    }
+  };
+
   const setNextQuestion = () => {
     if (!questions) return;
     if (questionIdx === questions.length - 2) {
@@ -99,15 +106,20 @@ const SportsQuiz = () => {
 
   const currentQuestion = questions[questionIdx];
 
+  if (!currentQuestion) return <h1>Eggs and bacon</h1>;
+
   return (
     <section className='quiz-container'>
       <header>
         <h1>Sports Quiz</h1>
       </header>
       {currentQuestion.type === 'boolean' ? (
-        <TrueFalse question={currentQuestion} />
+        <TrueFalse checkIfCorrect={checkIfCorrect} question={currentQuestion} />
       ) : (
-        <MultiChoice question={currentQuestion} />
+        <MultiChoice
+          checkIfCorrect={checkIfCorrect}
+          question={currentQuestion}
+        />
       )}
       {showResultsButton ? (
         <button>Show Results</button>
