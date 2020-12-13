@@ -109,7 +109,11 @@ const SportsQuiz = () => {
       ) : (
         <MultiChoice question={currentQuestion} />
       )}
-      <button onClick={setNextQuestion}>Next Question</button>
+      {showResultsButton ? (
+        <button>Show Results</button>
+      ) : (
+        <button onClick={setNextQuestion}>Next Question</button>
+      )}
     </section>
   );
 };
