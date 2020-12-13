@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { TQuestion } from '../sports-quiz/SportsQuiz';
+import { TQuestion } from './SportsQuiz';
 
 type Props = {
   question: TQuestion;

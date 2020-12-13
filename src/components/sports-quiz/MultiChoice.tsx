@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { TQuestion } from '../sports-quiz/SportsQuiz';
+import { TQuestion } from './SportsQuiz';
+import './MultiChoice.styles.scss';
 
 type Props = {
   question: TQuestion;
