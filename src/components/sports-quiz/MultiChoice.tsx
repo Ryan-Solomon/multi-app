@@ -37,4 +37,4 @@ const MultiChoice: FC<Props> = ({ question, checkIfCorrect }) => {
   );
 };
 
-export default MultiChoice;
+export default React.memo(MultiChoice);
