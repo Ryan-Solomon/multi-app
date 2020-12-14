@@ -8,6 +8,7 @@ import CounterGamePage from './pages/CounterGamePage';
 import SportsQuizPage from './pages/SportsQuizPage';
 import CartPage from './pages/CartPage';
 import ProductsPage from './pages/ProductsPage';
+import { ProductContextProvider } from './context/product/productContext';
 
 function App() {
   return (
@@ -26,12 +27,14 @@ function App() {
         <Route exact path='/quiz'>
           <SportsQuizPage />
         </Route>
-        <Route exact path='/cart'>
-          <CartPage />
-        </Route>
-        <Route exact path='/products'>
-          <ProductsPage />
-        </Route>
+        <ProductContextProvider>
+          <Route exact path='/cart'>
+            <CartPage />
+          </Route>
+          <Route exact path='/products'>
+            <ProductsPage />
+          </Route>
+        </ProductContextProvider>
       </Switch>
     </Router>
   );

@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useContext } from 'react';
 import { ProductStatus, TContext, TProduct } from './productTypes';
 
 const initialContext: TContext = {
@@ -33,4 +33,8 @@ export const ProductContextProvider: FC<ReactNode> = ({ children }) => {
       {children}
     </ProductContext.Provider>
   );
+};
+
+export const useProductContext = () => {
+  return useContext(ProductContext);
 };
