@@ -1,5 +1,6 @@
 import React from 'react';
 import { useProductContext } from '../../context/product/productContext';
+import Product from './Product';
 
 const Products = () => {
   const { products, status } = useProductContext();
@@ -8,7 +9,7 @@ const Products = () => {
     <>
       {products &&
         products.map((product) => {
-          return <h1 key={product.id}>{product.title}</h1>;
+          return <Product key={product.id} product={product} />;
         })}
     </>
   );
