@@ -7,6 +7,7 @@ import InfiniteScrollPage from './pages/InfiniteScrollPage';
 import CounterGamePage from './pages/CounterGamePage';
 import SportsQuizPage from './pages/SportsQuizPage';
 import CartPage from './pages/CartPage';
+import ProductsPage from './pages/ProductsPage';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path='/cart'>
           <CartPage />
+        </Route>
+        <Route exact path='/products'>
+          <ProductsPage />
         </Route>
       </Switch>
     </Router>
