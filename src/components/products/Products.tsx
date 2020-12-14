@@ -5,10 +5,12 @@ const Products = () => {
   const { products, status } = useProductContext();
 
   return (
-    products &&
-    products.map((prod) => {
-      return <h1 key={prod.id}>{prod.title}</h1>;
-    })
+    <>
+      {products &&
+        products.map((product) => {
+          return <h1 key={product.id}>{product.title}</h1>;
+        })}
+    </>
   );
 };
 
