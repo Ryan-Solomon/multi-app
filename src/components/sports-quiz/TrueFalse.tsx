@@ -3,10 +3,12 @@ import { TQuestion } from './SportsQuiz';
 
 type Props = {
   question: TQuestion;
+
   checkIfCorrect: (a: string, b: string) => void;
 };
 
 const TrueFalse: FC<Props> = ({ question, checkIfCorrect }) => {
+  const [showResult, setShowResult] = React.useState<boolean | null>(null);
   const {
     question: currentQuestion,
     correct_answer,
@@ -26,4 +28,4 @@ const TrueFalse: FC<Props> = ({ question, checkIfCorrect }) => {
   );
 };
 
-export default TrueFalse;
+export default React.memo(TrueFalse);
