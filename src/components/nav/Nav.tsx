@@ -24,6 +24,9 @@ const Nav = () => {
         <Link to='/grudges'>
           <li>Grudges</li>
         </Link>
+        <Link to='/todo'>
+          <li>Todo</li>
+        </Link>
         <Link to='/accordion'>
           <li>Accordion</li>
         </Link>

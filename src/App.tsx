@@ -9,6 +9,7 @@ import SportsQuizPage from './pages/SportsQuizPage';
 import CartPage from './pages/CartPage';
 import ProductsPage from './pages/ProductsPage';
 import { ProductContextProvider } from './context/product/productContext';
+import TodoPage from './pages/TodoPage';
 
 function App() {
   return (
@@ -23,6 +24,9 @@ function App() {
         </Route>
         <Route exact path='/countergame'>
           <CounterGamePage />
+        </Route>
+        <Route exact path='/todo'>
+          <TodoPage />
         </Route>
         <Route exact path='/quiz'>
           <SportsQuizPage />
