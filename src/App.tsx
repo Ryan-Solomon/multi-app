@@ -10,6 +10,7 @@ import CartPage from './pages/CartPage';
 import ProductsPage from './pages/ProductsPage';
 import { ProductContextProvider } from './context/product/productContext';
 import TodoPage from './pages/TodoPage';
+import GrudgeListPage from './pages/GrudgeListPage';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
         </Route>
         <Route exact path='/todo'>
           <TodoPage />
+        </Route>
+        <Route exact path='/grudges'>
+          <GrudgeListPage />
         </Route>
         <Route exact path='/quiz'>
           <SportsQuizPage />
