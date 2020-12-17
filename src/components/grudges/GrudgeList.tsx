@@ -1,3 +1,4 @@
+import { setUncaughtExceptionCaptureCallback } from 'process';
 import React, { useReducer } from 'react';
 
 type TGrudge = {
@@ -42,8 +43,57 @@ function reducer(state: TState, action: TAction): TState {
 }
 
 const GrudgeList = () => {
-  const [grudges, setGrudges] = useReducer(reducer, initialState);
-  return <div>grudges</div>;
+  const [grudges, dispatch] = useReducer(reducer, initialState);
+  const [input, setInput] = React.useState('');
+
+  return (
+    <>
+      <h1>Grudges</h1>
+      <h3>Add Grudge</h3>
+      <input
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder='Your grudge'
+        type='text'
+      />
+      <button
+        onClick={() => {
+          dispatch({
+            type: 'ADD',
+            payload: {
+              text: input,
+              id: Math.random(),
+            },
+          });
+          setInput('');
+        }}
+      >
+        Add
+      </button>
+      {grudges.grudges.length > 0 &&
+        grudges.grudges.map((g) => {
+          return (
+            <>
+              <h1 key={g.id}>{g.text}</h1>
+              <button
+                onClick={() => {
+                  dispatch({ type: 'DELETE', payload: g.id });
+                }}
+              >
+                Delete
+              </button>
+              <button
+                onClick={() => {
+                  dispatch({ type: 'CLEAR' });
+                }}
+              >
+                Clear
+              </button>
+            </>
+          );
+        })}
+    </>
+  );
 };
 
 export default GrudgeList;
