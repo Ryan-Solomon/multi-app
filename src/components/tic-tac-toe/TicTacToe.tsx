@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './TicTacToe.styles.scss';
 
 const initialBoard = [null, null, null, null, null, null, null, null, null];
@@ -12,12 +12,18 @@ const TicTacToe = () => {
       const newBoard = board.slice();
       newBoard[idx] = 1;
       setBoard(newBoard);
+      setCurrentPlayer('Two');
     } else if (currentPlayer === 'Two') {
       const newBoard = board.slice();
       newBoard[idx] = -1;
       setBoard(newBoard);
+      setCurrentPlayer('One');
     }
   };
+
+  useEffect(() => {
+    // Check if winner
+  }, [board]);
 
   return (
     <main className='tic-tac-toe-container'>
@@ -27,6 +33,7 @@ const TicTacToe = () => {
           if (idx < 3) {
             return (
               <button
+                disabled={num !== null}
                 onClick={() => clickSquare(idx)}
                 key={Math.random()}
                 className='cell'
@@ -44,6 +51,7 @@ const TicTacToe = () => {
           if (idx > 2 && idx < 6) {
             return (
               <button
+                disabled={num !== null}
                 onClick={() => clickSquare(idx)}
                 key={Math.random()}
                 className='cell'
@@ -61,6 +69,7 @@ const TicTacToe = () => {
           if (idx >= 6) {
             return (
               <button
+                disabled={num !== null}
                 onClick={() => clickSquare(idx)}
                 key={Math.random()}
                 className='cell'
