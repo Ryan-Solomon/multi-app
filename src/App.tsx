@@ -11,6 +11,7 @@ import ProductsPage from './pages/ProductsPage';
 import { ProductContextProvider } from './context/product/productContext';
 import TodoPage from './pages/TodoPage';
 import GrudgeListPage from './pages/GrudgeListPage';
+import TicTacToePage from './pages/TicTacToePage';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
         </Route>
         <Route exact path='/quiz'>
           <SportsQuizPage />
+        </Route>
+        <Route exact path='/ttt'>
+          <TicTacToePage />
         </Route>
         <ProductContextProvider>
           <Route exact path='/cart'>
