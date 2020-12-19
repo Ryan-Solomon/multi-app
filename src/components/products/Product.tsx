@@ -13,8 +13,9 @@ const Product: FC<TProps> = ({ product }) => {
       className='product-item'
     >
       <div className='details'>
+        <button>Add To Cart</button>
         <h1>{product.title}</h1>
-        <h4>{product.price}</h4>
+        <h4>${product.price}</h4>
       </div>
     </div>
   );
