@@ -10,6 +10,9 @@ export type TProduct = {
 export type TContext = {
   products: TProduct[];
   status: ProductStatus;
+  addToCart: (product: TProduct) => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
 };
 
 export enum ProductStatus {
