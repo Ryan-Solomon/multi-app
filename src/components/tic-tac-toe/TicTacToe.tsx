@@ -6,6 +6,7 @@ const initialBoard = [null, null, null, null, null, null, null, null, null];
 const TicTacToe = () => {
   const [board, setBoard] = useState<(null | number)[]>(initialBoard);
   const [currentPlayer, setCurrentPlayer] = useState('One');
+  const [winner, setWinner] = useState<'X' | 'O' | 'T' | null>(null);
 
   const clickSquare = (idx: number) => {
     if (currentPlayer === 'One') {
@@ -22,8 +23,54 @@ const TicTacToe = () => {
   };
 
   useEffect(() => {
-    // Check if winner
+    const potentialPaths = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+    let isNullValue = false;
+    for (let i = 0; i < potentialPaths.length; i++) {
+      let sum = 0;
+      for (let j = 0; j < potentialPaths[i].length; j++) {
+        let currentIdx = potentialPaths[i][j];
+        if (board[currentIdx]) {
+          sum += board[currentIdx]!;
+        } else {
+          isNullValue = true;
+        }
+      }
+      if (sum === 3) {
+        setWinner('O');
+      } else if (sum === -3) {
+        setWinner('X');
+      }
+    }
+
+    if (!isNullValue) {
+      setWinner('T');
+    }
   }, [board]);
+
+  if (winner) {
+    return (
+      <div>
+        <h1>The winner is {winner}</h1>
+        <button
+          onClick={() => {
+            setBoard(initialBoard);
+            setWinner(null);
+          }}
+        >
+          Play Again
+        </button>
+      </div>
+    );
+  }
 
   return (
     <main className='tic-tac-toe-container'>
